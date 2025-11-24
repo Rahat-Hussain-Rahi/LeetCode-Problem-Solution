@@ -4,39 +4,20 @@
 #include<algorithm>
 #include<cmath>
 using namespace std;
-int BtoN(string str)
-{
-    int num{};
-    // reverse(str.begin(), str.end());
-    for (int i{}; str[i] != '\0'; ++i)
+vector<bool> prefixesDivBy5(vector<int>& nums) 
     {
-        if (str[i] == '1')
+        int size=nums.size();
+        vector<bool> vec(size,false);
+         int num=0;
+        for(int i{};i<size;++i)
         {
-            num += pow(2, i);
+            num = ((num * 2) + nums[i]) % 5;
+            if (num == 0) {
+                vec[i] = true;
+            }
         }
+        return vec;
     }
-    return num;
-}
-vector<bool> prefixesDivBy5(vector<int> &nums)
-{
-    int size = nums.size();
-    vector<bool> vec(size, false);
-    string str{};
-    for (int i{}; i < size; ++i)
-    {
-        
-        int num =0;
-        if(nums[i]==1)
-        {
-            num+=pow(2,i);
-        }
-        if (num % 5 == 0)
-        {
-            vec[i] = true;
-        }
-    }
-    return vec;
-}
 int main()
 {
    
@@ -56,4 +37,5 @@ int main()
         cout<<val;
     }
     return 0;
+
 }
